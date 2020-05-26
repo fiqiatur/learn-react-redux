@@ -1,10 +1,10 @@
 import API from "../axios/api";
 
-export const ambilDataPost = async () => {
+export const ambilDataPost = () => async (dispatch) => {
    const data = await API.get("/posts");
 
-   return {
+   dispatch({
       type: "AMBIL_POST",
       data: data,
-   };
+   });
 };
