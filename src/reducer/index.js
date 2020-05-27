@@ -7,6 +7,14 @@ const listPostReducer = (list = [], action) => {
    return list;
 };
 
+const ambilUserReducer = (users = [], action) => {
+   if (action.type === "AMBIL_USER") {
+      return [...users, action.data];
+   }
+   return users;
+};
+
 export default combineReducers({
    listPost: listPostReducer,
+   Users: ambilUserReducer,
 });

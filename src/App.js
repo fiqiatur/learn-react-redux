@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { ambilDataPost } from "./action"; //import data dari action
+import { ambilPostdanUser } from "./action"; //import data dari action
+import NamaUser from "./NamaUser";
 
 export class App extends Component {
    componentDidMount() {
-      this.props.ambilDataPost();
+      this.props.ambilPostdanUser();
    }
 
    renderList() {
@@ -17,7 +18,10 @@ export class App extends Component {
          return (
             <div key={post.id}>
                <div className="card ">
-                  <div className="card-header">{post.id}</div>
+                  <div className="card-header">
+                     {" "}
+                     <NamaUser userId={post.userId} />
+                  </div>
                   <div className="card-body">
                      <h5 className="card-title">{post.title}</h5>
                      <p className="card-text">{post.body}</p>
@@ -46,4 +50,4 @@ const stateToProps = (state) => {
    return { ListPost: state.listPost };
 };
 
-export default connect(stateToProps, { ambilDataPost })(App);
+export default connect(stateToProps, { ambilPostdanUser })(App);
