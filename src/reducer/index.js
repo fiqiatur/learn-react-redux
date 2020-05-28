@@ -13,8 +13,14 @@ const ambilUserReducer = (users = [], action) => {
    }
    return users;
 };
-
+const ambilDetailPostReducer = (post = null, action) => {
+   if (action.type === "DETAIL_POST") {
+      return action.data;
+   }
+   return post;
+};
 export default combineReducers({
    listPost: listPostReducer,
    Users: ambilUserReducer,
+   DetailPost: ambilDetailPostReducer,
 });

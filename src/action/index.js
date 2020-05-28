@@ -25,5 +25,16 @@ export const ambilPostdanUser = () => async (dispatch, getState) => {
    var idUser = Array.from(setPost); //merubah set ke bentuk aray untuk dilakukan pengulangan dengan foreach
 
    idUser.forEach((id) => dispatch(ambilUser(id)));
-   console.log(setPost);
+};
+
+export const ambilDetailPost = (idpost) => async (dispatch, getState) => {
+   const response = await API.get(`posts/${idpost}`);
+
+   dispatch({
+      type: "DETAIL_POST",
+      data: response.data,
+   });
+
+   await dispatch(ambilUser(response.data.userId));
+   console.log(getState())
 };
